@@ -7,9 +7,46 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>es-cl</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 06 Sep 2018 23:11:47 -0300</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Aborto</title>
+      <link>/tags/aborto/</link>
+      <pubDate>Thu, 06 Sep 2018 23:11:47 -0300</pubDate>
+      
+      <guid>/tags/aborto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Quantica</title>
+      <link>/tags/quantica/</link>
+      <pubDate>Thu, 06 Sep 2018 23:11:47 -0300</pubDate>
+      
+      <guid>/tags/quantica/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Servel</title>
+      <link>/tags/servel/</link>
+      <pubDate>Tue, 06 Feb 2018 23:11:34 -0300</pubDate>
+      
+      <guid>/tags/servel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unix</title>
+      <link>/tags/unix/</link>
+      <pubDate>Tue, 06 Feb 2018 23:11:34 -0300</pubDate>
+      
+      <guid>/tags/unix/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

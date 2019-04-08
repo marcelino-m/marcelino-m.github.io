@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>marcelino-m</title>
-    <link>/</link>
-    <description>Recent content on marcelino-m</description>
+    <title>Unix on marcelino-m</title>
+    <link>/tags/unix/</link>
+    <description>Recent content in Unix on marcelino-m</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-cl</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 06 Sep 2018 23:11:47 -0300</lastBuildDate>
+    <lastBuildDate>Tue, 06 Feb 2018 23:11:34 -0300</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/unix/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Mecánica cuántica y el derecho al aborto</title>
-      <link>/posts/2018/09/mec%C3%A1nica-cu%C3%A1ntica-y-el-derecho-al-aborto/</link>
-      <pubDate>Thu, 06 Sep 2018 23:11:47 -0300</pubDate>
-      
-      <guid>/posts/2018/09/mec%C3%A1nica-cu%C3%A1ntica-y-el-derecho-al-aborto/</guid>
-      <description>Una gran parte de las personas que se oponen al aborto son cristianos y dentro de los argumentos que se esgriman hay uno que al parecer es el mas frecuente, y este es que el alma aparece justo en el momento de la concepción. Para los cristianos el problema es el alma y no la vida, ya que muchos comen animales que están vivos y para salir de esta posible contradicción sostienen que estos últimos no tiene alma.</description>
-    </item>
     
     <item>
       <title>El padrón electoral del Servel en tu base de datos</title>
@@ -50,15 +41,6 @@ En concreto es la ley 18.556 la que obliga al Servel a presentar junto con el pa
       <description>El problema Hace poco tiempo atrás me encontraba con el siguiente misión:
 Generar 34 millones de registros alfanuméricos (solo letras y números) únicos, aleatorios, de largo 7. Todos tenían que tener estrictamente al menos una minúscula, una mayúscula y un número. Por último los registros debían ser guardados en un CSV de 37 columnas.
 Un ejemplo de un registro valido seria: dUH08XG , y de registros no validos: duHaGxg ni tampoco: duh08xg</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>Acerca de Mí Mi nombre es Marcelo, me dedico al desarrollo de software, me encanta la tecnología y me gusta experimentar con ella, siempre estoy aprendiendo cosas nuevas, soy lo suficientemente disperso y un procrastinador profesional, lo cual me ha llevado a experimentar con el teatro, el dibujo, la cocina, las matemáticas, la física, el desarrollo de software y cuanta “shit” encuentre entretenida.</description>
     </item>
     
   </channel>

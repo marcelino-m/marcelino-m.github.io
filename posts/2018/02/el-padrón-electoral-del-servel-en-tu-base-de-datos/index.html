@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author"
+    content="Marcelo Muñoz A. ">
+<meta name="description"
+    content="En este post mostrare una técnica para parsear los datos del padrón electoral del Servel que vienen en formato PDF&amp;rsquo;s y transformarlos a formato CSV, así puedes trabajar con ellos y hacer lo que se te ocurra, como encontrar apellidos en peligro de extinción, construir tu propio rutificador, ingresar eso datos a SQLite, Postgres, MongoDB, o Exel si prefieres.
+Al final del post agregare un link a un script que junta todo lo visto aquí para automatizar el proceso y lo puedas hacer tu mismo (llegar y usar)." />
+<meta name="keywords" content="homepage, blog, science, informatics, development, programming" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/posts/2018/02/el-padr%C3%B3n-electoral-del-servel-en-tu-base-de-datos/" />
+
+
+<title>
+    
+    El padrón electoral del Servel en tu base de datos :: marcelino-m 
+    
+</title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+<link rel="stylesheet" href="/scss/main.min.099699ab246bf26f50616f7c9f00c79d46110459d1bd727b2d07d6fc09ece082.css">
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#252627">
+<meta itemprop="name" content="El padrón electoral del Servel en tu base de datos">
+<meta itemprop="description" content="En este post mostrare una técnica para parsear los datos del padrón electoral del Servel que vienen en formato PDF&rsquo;s y transformarlos a formato CSV, así puedes trabajar con ellos y hacer lo que se te ocurra, como encontrar apellidos en peligro de extinción, construir tu propio rutificador, ingresar eso datos a SQLite, Postgres, MongoDB, o Exel si prefieres.
+Al final del post agregare un link a un script que junta todo lo visto aquí para automatizar el proceso y lo puedas hacer tu mismo (llegar y usar).">
+
+
+<meta itemprop="datePublished" content="2018-02-06T23:11:34-03:00" />
+<meta itemprop="dateModified" content="2018-02-06T23:11:34-03:00" />
+<meta itemprop="wordCount" content="754">
+
+
+
+<meta itemprop="keywords" content="unix,servel," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/"/>
+
+<meta name="twitter:title" content="El padrón electoral del Servel en tu base de datos"/>
+<meta name="twitter:description" content="En este post mostrare una técnica para parsear los datos del padrón electoral del Servel que vienen en formato PDF&rsquo;s y transformarlos a formato CSV, así puedes trabajar con ellos y hacer lo que se te ocurra, como encontrar apellidos en peligro de extinción, construir tu propio rutificador, ingresar eso datos a SQLite, Postgres, MongoDB, o Exel si prefieres.
+Al final del post agregare un link a un script que junta todo lo visto aquí para automatizar el proceso y lo puedas hacer tu mismo (llegar y usar)."/>
+
+
+
+
+<meta property="article:published_time" content="2018-02-06 23:11:34 -0300 -03" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">cd ~/home</span>
+            <span class="logo__cursor"></span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/about">about</a></li><li><a href="/posts">posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>4 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title"><a href="/posts/2018/02/el-padr%C3%B3n-electoral-del-servel-en-tu-base-de-datos/">El padrón electoral del Servel en tu base de datos</a></h1>
+
+            
+
+            <div class="post-content">
+                
+
+<p>En este  post mostrare una técnica  para parsear los datos  del padrón
+electoral del  Servel que vienen  en formato PDF&rsquo;s y  transformarlos a
+formato  CSV, así  puedes trabajar  con  ellos y  hacer lo  que se  te
+ocurra, como encontrar <a href="/posts/servel-uno">apellidos en peligro de extinción</a>,
+construir tu
+propio <a href="https://rutchile.cl/">rutificador</a>, ingresar
+eso datos a SQLite, Postgres, MongoDB, o Exel si prefieres.</p>
+
+<p>Al final del post agregare un link a un script que junta todo lo visto
+aquí para automatizar el proceso y  lo puedas hacer tu mismo (llegar y
+usar).</p>
+
+<h2 id="la-fuente-de-datos">La fuente de datos</h2>
+
+<p>Los datos del padrón electoral vienen  como un conjunto de archivos en
+formato PDF agrupados por comuna lo que significa que en total son 346
+documentos con  cientos de páginas  cada uno,  en total esta  &ldquo;base de
+datos&rdquo; pesa 1.5 GB (que no es tanto).</p>
+
+<p>A continuación una  página de un documento cualquiera de  esta base de
+datos,  cabe destacar  que todas  las páginas  de cada  archivo siguen
+exactamente el mismo formato:</p>
+
+<p><img src="/servel-post/pdfservelejemplo.png" alt="ejemplo pdf servel" /></p>
+
+<h2 id="como-se-hace">Como se hace?</h2>
+
+<p>El  primer paso  es usar  una herramienta  llamada pdftotext  que hace
+justamente lo  que su nombre  indica, transforma PDF&rsquo;s en  archivos de
+texto plano (y a las personas  como yo nos encantan los textos planos,
+ya que son simples y muy versátiles)</p>
+
+<p>El programa se ejecuta de esta forma:</p>
+
+<pre><code class="language-bash">pdftotext -layout /path/to/file.pdf &gt; file.txt
+</code></pre>
+
+<p>El resultado es un archivo de  texto plano, con el flag <strong>-layout</strong> el
+programa pdftotext intenta mantener el formato del documento original.</p>
+
+<p>El resultado luce algo así:</p>
+
+<p><img src="/servel-post/pdf-servel-ejemplo-txt.png" alt="pdftotext" /></p>
+
+<p>El  siguiente  paso es  eliminar  secciones  del  archivo que  no  nos
+interesan:  la parte  del recuadro  en Verde  que he  remarcado.  Este
+recuadro  corresponde al  cabecera  de  cada una  de  las páginas  del
+documento que acabamos  de procesar.  Nuestro archivo  de texto tendrá
+tantos de estos recuadros como páginas tenga el documento original.</p>
+
+<p>Este patrón  se repite tantas veces  por cada archivo que  lo mejor es
+usar  alguna  herramienta que  haga  el  trabajo sucio  por  nosotros.
+<strong>sed</strong> es tu turno!:</p>
+
+<pre><code class="language-bash">cat file.txt | sed -e &quot;/REPUBLICA/,/NOMBRE.*SEXO.*MESA$/d&quot; &gt; file-woh.txt
+</code></pre>
+
+<p>Ahora nos queda la  ultima parte, que es la de  detectar y separar los
+respectivos campos  del documento para  generar el CSV.   El resultado
+intermedio que  tenemos presenta algunas complicaciones  que hacen que
+esta tarea no sea directa, estas complicaciones aparecen alrededor del
+30% de los registros, a continuación presentamos algunas:</p>
+
+<ol>
+<li><p>Aveces  un registro  aparece  desplegado  en  mas de  una  línea,
+observemos el recuadro en Rojo</p></li>
+
+<li><p>No todos  los registros tienes todos  sus campos si te  fijas en el
+recuadro Azul hay dos registros que no tienen domicilio electoral.</p></li>
+
+<li><p>La separación entre campos  no es constante, en diferentes registros
+la <strong>dirección  electoral</strong> y  la <strong>circunscripción</strong>  están separados
+por 3 espacios , aveces  por más y como  se menciono en  el punto
+anterior aveces no  existe esta información, lo mismo  ocurre en otras
+partes   entre  la   circunscripción  y   la  mesa   electoral.</p></li>
+</ol>
+
+<p>Para corregir el prunto <strong>1</strong>  ocuparemos la observación de que cuando
+un registro aparece  desplegado en múltiples líneas  ocupa como máximo
+cuatro, Este script busca este patrón y corrige el error:</p>
+
+<pre><code class="language-bash">cat file-woh.txt | sed -e &quot;N;N;N;N; s/\n  */ /; P; D&quot; &gt; file-woh-fix1.txt
+</code></pre>
+
+<p>En este punto  ya tenemos un archivo con todos  sus registros ocupando
+solo una  línea, lo  que queda  es generar  el CSV,  esto nos  lleva a
+resolver el punto <strong>2</strong> y <strong>3</strong></p>
+
+<p>Para esto  ocuparemos como &ldquo;pivote&rdquo; el  campo sexo (con valores  VAR o
+MUJ) observando  que la separación  de este  campo con respecto  a los
+otros se  mantiene constante  y es  de exactamente  3 espacios  (en un
+registro con dirección electoral y de 4 o más, a su derecha, cuando el
+registro no posee  esta información, este patrón  nos permite detectar
+el punto  <strong>2</strong> ). El  punto <strong>3</strong> se  simplifica al haber  resulto el
+<strong>2</strong> ya  que se observa que  se puede esperar  a que el resto  de los
+campos están separados por al menos 3 espacios.</p>
+
+<p>El siguiente script aplica esta heurística a cada registro del archivo</p>
+
+<pre><code class="language-bash">read -r -d '' SEDSCRIPT &lt;&lt; EOS
+  s/\s\{3,\}MUJ\s\{4,\}/;MUJ;;/
+  s/\s\{3,\}VAR\s\{4,\}/;VAR;;/
+  s/\s\s\sMUJ\s\s\s/;MUJ;/
+  s/\s\s\sVAR\s\s\s/;VAR;/
+  s/\s\{3,\}/;/g
+EOS
+
+cat  file-woh-fix1.txt | sed -e &quot;$SEDSCRIPT&quot; &gt; file.csv
+
+</code></pre>
+
+<p>El resultado es un  es un CSV con separador de campo &ldquo;  <strong>;</strong> &ldquo;. Yo he
+aplicado estos pasos  a todos los PDF&rsquo;s del padrón  electoral del 2016
+que  contiene 1,384,620  registros, el  error  que se  obtiene es  del
+0.58%.</p>
+
+<h2 id="hazlo-tu">Hazlo tu!</h2>
+
+<p>Puedes descargar un script de que realice <a href="https://github.com/marcelino-m/servel/blob/master/script/pdfservel2csv.sh">aquí</a> para transformar uno o todos
+los PDF, con la opción de generar un CSV con todos los resultados o un CSV
+por cada PDF:</p>
+
+<p><a href="https://asciinema.org/a/141371"><img src="https://asciinema.org/a/141371.png" alt="asciicast" /></a></p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="/tags/unix">unix</a></span><span class="tag"><a href="/tags/servel">servel</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>754 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2018-02-06 23:11 -0300</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h"></span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="/posts/2018/09/mec%C3%A1nica-cu%C3%A1ntica-y-el-derecho-al-aborto/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">Mecánica cuántica y el derecho al aborto</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="/posts/2018/01/el-padr%C3%B3n-electoral-del-servel-y-apellidos-en-peligro-de-extinci%C3%B3n/">
+                                <span class="button__text">El padrón electoral del servel y apellidos en peligro de extinción </span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__content">
+      <span>&copy; 2019</span>
+      
+      <span><a href="/">Marcelo Muñoz A.</a></span>
+      
+      <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+      <span> <a href="/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+    </div>
+  </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+
+<script type="text/javascript" src="/js/bundle.min.cf7871ed49474a80ed457154d24e61f7881adbe0f9384951a74ac46b688a39a4dbfa68bc6d37baeb058186de354ead3487d4ee7f083ea4cba860c48600b694f3.js" integrity="sha512-z3hx7UlHSoDtRXFU0k5h94ga2&#43;D5OElRp0rEa2iKOaTb&#43;mi8bTe66wWBht41Tq00h9Tufwg&#43;pMuoYMSGALaU8w=="></script>
+
+
+
+    </body>
+</html>
