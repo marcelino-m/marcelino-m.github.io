@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>marcelino-m</title>
+    <link>/</link>
+    <description>Recent content on marcelino-m</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-cl</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Acerca de Mí Mi nombre es Marcelo, me dedico al desarrollo de software, me encanta la tecnología y me gusta experimentar con ella, siempre estoy aprendiendo cosas nuevas, soy lo suficientemente disperso y un procrastinador profesional, lo cual me ha llevado a experimentar con el teatro, el dibujo, la cocina, las matemáticas, la física, el desarrollo de software y cuanta “shit” encuentre entretenida.</description>
+    </item>
+    
+  </channel>
+</rss>
