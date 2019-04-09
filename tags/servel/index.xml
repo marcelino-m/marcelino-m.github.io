@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Servel on marcelino-m</title>
-    <link>/tags/servel/</link>
+    <link>marcelino-m.github.io/tags/servel/</link>
     <description>Recent content in Servel on marcelino-m</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-cl</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Tue, 06 Feb 2018 23:11:34 -0300</lastBuildDate>
     
-	<atom:link href="/tags/servel/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="marcelino-m.github.io/tags/servel/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>El padrón electoral del Servel en tu base de datos</title>
-      <link>/posts/2018/02/el-padr%C3%B3n-electoral-del-servel-en-tu-base-de-datos/</link>
+      <link>marcelino-m.github.io/posts/2018/02/el-padr%C3%B3n-electoral-del-servel-en-tu-base-de-datos/</link>
       <pubDate>Tue, 06 Feb 2018 23:11:34 -0300</pubDate>
       
-      <guid>/posts/2018/02/el-padr%C3%B3n-electoral-del-servel-en-tu-base-de-datos/</guid>
+      <guid>marcelino-m.github.io/posts/2018/02/el-padr%C3%B3n-electoral-del-servel-en-tu-base-de-datos/</guid>
       <description>En este post mostrare una técnica para parsear los datos del padrón electoral del Servel que vienen en formato PDF&amp;rsquo;s y transformarlos a formato CSV, así puedes trabajar con ellos y hacer lo que se te ocurra, como encontrar apellidos en peligro de extinción, construir tu propio rutificador, ingresar eso datos a SQLite, Postgres, MongoDB, o Exel si prefieres.
 Al final del post agregare un link a un script que junta todo lo visto aquí para automatizar el proceso y lo puedas hacer tu mismo (llegar y usar).</description>
     </item>
     
     <item>
       <title>El padrón electoral del servel y apellidos en peligro de extinción </title>
-      <link>/posts/2018/01/el-padr%C3%B3n-electoral-del-servel-y-apellidos-en-peligro-de-extinci%C3%B3n/</link>
+      <link>marcelino-m.github.io/posts/2018/01/el-padr%C3%B3n-electoral-del-servel-y-apellidos-en-peligro-de-extinci%C3%B3n/</link>
       <pubDate>Fri, 05 Jan 2018 23:11:06 -0300</pubDate>
       
-      <guid>/posts/2018/01/el-padr%C3%B3n-electoral-del-servel-y-apellidos-en-peligro-de-extinci%C3%B3n/</guid>
+      <guid>marcelino-m.github.io/posts/2018/01/el-padr%C3%B3n-electoral-del-servel-y-apellidos-en-peligro-de-extinci%C3%B3n/</guid>
       <description>El padrón electoral del Servel Servel expone de forma irresponsable (obligado por la legislación actual) los datos del padrón electoral, cuyo atributo mas sensible es la dirección electoral al presentarse junto al nombre y R.U.T de los habilitados para votar, que son casi todos los mayores de 18 años.
 En concreto es la ley 18.556 la que obliga al Servel a presentar junto con el padrón electoral los datos de tu nombre, R.</description>
     </item>

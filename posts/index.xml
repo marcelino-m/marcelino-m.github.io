@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on marcelino-m</title>
-        <link>/posts/</link>
+        <link>marcelino-m.github.io/posts/</link>
         <description>Recent content in Posts on marcelino-m</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>es-cl</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
         <lastBuildDate>Thu, 06 Sep 2018 23:11:47 -0300</lastBuildDate>
-        <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="marcelino-m.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>Mecánica cuántica y el derecho al aborto</title>
-            <link>/posts/2018/09/mec%C3%A1nica-cu%C3%A1ntica-y-el-derecho-al-aborto/</link>
+            <link>marcelino-m.github.io/posts/2018/09/mec%C3%A1nica-cu%C3%A1ntica-y-el-derecho-al-aborto/</link>
             <pubDate>Thu, 06 Sep 2018 23:11:47 -0300</pubDate>
             
-            <guid>/posts/2018/09/mec%C3%A1nica-cu%C3%A1ntica-y-el-derecho-al-aborto/</guid>
+            <guid>marcelino-m.github.io/posts/2018/09/mec%C3%A1nica-cu%C3%A1ntica-y-el-derecho-al-aborto/</guid>
             <description>Una gran parte de las personas que se oponen al aborto son cristianos y dentro de los argumentos que se esgriman hay uno que al parecer es el mas frecuente, y este es que el alma aparece justo en el momento de la concepción. Para los cristianos el problema es el alma y no la vida, ya que muchos comen animales que están vivos y para salir de esta posible contradicción sostienen que estos últimos no tiene alma.</description>
             <content type="html"><![CDATA[<p>Una gran parte de las personas  que se oponen al aborto son cristianos
 y dentro de los  argumentos que se esgriman hay uno  que al parecer es
@@ -35,10 +35,10 @@ es un momento que no tiene nada de especial para la aparición del alma
         
         <item>
             <title>El padrón electoral del Servel en tu base de datos</title>
-            <link>/posts/2018/02/el-padr%C3%B3n-electoral-del-servel-en-tu-base-de-datos/</link>
+            <link>marcelino-m.github.io/posts/2018/02/el-padr%C3%B3n-electoral-del-servel-en-tu-base-de-datos/</link>
             <pubDate>Tue, 06 Feb 2018 23:11:34 -0300</pubDate>
             
-            <guid>/posts/2018/02/el-padr%C3%B3n-electoral-del-servel-en-tu-base-de-datos/</guid>
+            <guid>marcelino-m.github.io/posts/2018/02/el-padr%C3%B3n-electoral-del-servel-en-tu-base-de-datos/</guid>
             <description>En este post mostrare una técnica para parsear los datos del padrón electoral del Servel que vienen en formato PDF&amp;rsquo;s y transformarlos a formato CSV, así puedes trabajar con ellos y hacer lo que se te ocurra, como encontrar apellidos en peligro de extinción, construir tu propio rutificador, ingresar eso datos a SQLite, Postgres, MongoDB, o Exel si prefieres.
 Al final del post agregare un link a un script que junta todo lo visto aquí para automatizar el proceso y lo puedas hacer tu mismo (llegar y usar).</description>
             <content type="html"><![CDATA[
@@ -171,10 +171,10 @@ por cada PDF:</p>
         
         <item>
             <title>El padrón electoral del servel y apellidos en peligro de extinción </title>
-            <link>/posts/2018/01/el-padr%C3%B3n-electoral-del-servel-y-apellidos-en-peligro-de-extinci%C3%B3n/</link>
+            <link>marcelino-m.github.io/posts/2018/01/el-padr%C3%B3n-electoral-del-servel-y-apellidos-en-peligro-de-extinci%C3%B3n/</link>
             <pubDate>Fri, 05 Jan 2018 23:11:06 -0300</pubDate>
             
-            <guid>/posts/2018/01/el-padr%C3%B3n-electoral-del-servel-y-apellidos-en-peligro-de-extinci%C3%B3n/</guid>
+            <guid>marcelino-m.github.io/posts/2018/01/el-padr%C3%B3n-electoral-del-servel-y-apellidos-en-peligro-de-extinci%C3%B3n/</guid>
             <description>El padrón electoral del Servel Servel expone de forma irresponsable (obligado por la legislación actual) los datos del padrón electoral, cuyo atributo mas sensible es la dirección electoral al presentarse junto al nombre y R.U.T de los habilitados para votar, que son casi todos los mayores de 18 años.
 En concreto es la ley 18.556 la que obliga al Servel a presentar junto con el padrón electoral los datos de tu nombre, R.</description>
             <content type="html"><![CDATA[
@@ -247,10 +247,10 @@ para el siguiente post.</p>
         
         <item>
             <title>El poder de Unix al rescate </title>
-            <link>/posts/2017/09/el-poder-de-unix-al-rescate/</link>
+            <link>marcelino-m.github.io/posts/2017/09/el-poder-de-unix-al-rescate/</link>
             <pubDate>Sat, 09 Sep 2017 22:29:26 -0300</pubDate>
             
-            <guid>/posts/2017/09/el-poder-de-unix-al-rescate/</guid>
+            <guid>marcelino-m.github.io/posts/2017/09/el-poder-de-unix-al-rescate/</guid>
             <description>El problema Hace poco tiempo atrás me encontraba con el siguiente misión:
 Generar 34 millones de registros alfanuméricos (solo letras y números) únicos, aleatorios, de largo 7. Todos tenían que tener estrictamente al menos una minúscula, una mayúscula y un número. Por último los registros debían ser guardados en un CSV de 37 columnas.
 Un ejemplo de un registro valido seria: dUH08XG , y de registros no validos: duHaGxg ni tampoco: duh08xg</description>

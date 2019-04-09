@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on marcelino-m</title>
-    <link>/tags/</link>
+    <link>marcelino-m.github.io/tags/</link>
     <description>Recent content in Tags on marcelino-m</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-cl</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Thu, 06 Sep 2018 23:11:47 -0300</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="marcelino-m.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Aborto</title>
-      <link>/tags/aborto/</link>
+      <link>marcelino-m.github.io/tags/aborto/</link>
       <pubDate>Thu, 06 Sep 2018 23:11:47 -0300</pubDate>
       
-      <guid>/tags/aborto/</guid>
+      <guid>marcelino-m.github.io/tags/aborto/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Quantica</title>
-      <link>/tags/quantica/</link>
+      <link>marcelino-m.github.io/tags/quantica/</link>
       <pubDate>Thu, 06 Sep 2018 23:11:47 -0300</pubDate>
       
-      <guid>/tags/quantica/</guid>
+      <guid>marcelino-m.github.io/tags/quantica/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Servel</title>
-      <link>/tags/servel/</link>
+      <link>marcelino-m.github.io/tags/servel/</link>
       <pubDate>Tue, 06 Feb 2018 23:11:34 -0300</pubDate>
       
-      <guid>/tags/servel/</guid>
+      <guid>marcelino-m.github.io/tags/servel/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Unix</title>
-      <link>/tags/unix/</link>
+      <link>marcelino-m.github.io/tags/unix/</link>
       <pubDate>Tue, 06 Feb 2018 23:11:34 -0300</pubDate>
       
-      <guid>/tags/unix/</guid>
+      <guid>marcelino-m.github.io/tags/unix/</guid>
       <description></description>
     </item>
     
