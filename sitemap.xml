@@ -1,6 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/tags/aborto/</loc>
+    <lastmod>2018-09-06T23:11:47-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2018-09-06T23:11:47-03:00</lastmod>
+  </url>
   
   <url>
     <loc>/posts/2018/09/mec%C3%A1nica-cu%C3%A1ntica-y-el-derecho-al-aborto/</loc>
@@ -8,7 +18,32 @@
   </url>
   
   <url>
+    <loc>/posts/</loc>
+    <lastmod>2018-09-06T23:11:47-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/quantica/</loc>
+    <lastmod>2018-09-06T23:11:47-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2018-09-06T23:11:47-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/posts/2018/02/el-padr%C3%B3n-electoral-del-servel-en-tu-base-de-datos/</loc>
+    <lastmod>2018-02-06T23:11:34-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/servel/</loc>
+    <lastmod>2018-02-06T23:11:34-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/unix/</loc>
     <lastmod>2018-02-06T23:11:34-03:00</lastmod>
   </url>
   
@@ -24,53 +59,11 @@
   
   <url>
     <loc>/about/</loc>
-  </url>
-  
-  <url>
-    <loc>/tags/aborto/</loc>
-    <lastmod>2018-09-06T23:11:47-03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/posts/</loc>
-    <lastmod>2018-09-06T23:11:47-03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/quantica/</loc>
-    <lastmod>2018-09-06T23:11:47-03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/servel/</loc>
-    <lastmod>2018-02-06T23:11:34-03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2018-09-06T23:11:47-03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/unix/</loc>
-    <lastmod>2018-02-06T23:11:34-03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2018-09-06T23:11:47-03:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>

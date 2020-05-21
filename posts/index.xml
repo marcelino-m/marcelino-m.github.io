@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on marcelino-m</title>
@@ -23,12 +22,10 @@ el mas frecuente, y este es que el alma aparece justo en el momento de
 la concepción.  Para los  cristianos el  problema es el  alma y  no la
 vida, ya  que muchos comen  animales que están  vivos y para  salir de
 esta posible contradicción sostienen que estos últimos no tiene alma.</p>
-
 <p>Dejo un <a href="https://stallman.org/articles/quantum-abortion.html">link</a> a un pequeño  articulo que analiza el problema desde
 el prisma de la mecánica cuántica y el cual concluye que la concepción
 es un momento que no tiene nada de especial para la aparición del alma
 (en el caso que esta exista).</p>
-
 <p>¿Que piensas tú?</p>
 ]]></content>
         </item>
@@ -41,96 +38,74 @@ es un momento que no tiene nada de especial para la aparición del alma
             <guid>/posts/2018/02/el-padr%C3%B3n-electoral-del-servel-en-tu-base-de-datos/</guid>
             <description>En este post mostrare una técnica para parsear los datos del padrón electoral del Servel que vienen en formato PDF&amp;rsquo;s y transformarlos a formato CSV, así puedes trabajar con ellos y hacer lo que se te ocurra, como encontrar apellidos en peligro de extinción, construir tu propio rutificador, ingresar eso datos a SQLite, Postgres, MongoDB, o Exel si prefieres.
 Al final del post agregare un link a un script que junta todo lo visto aquí para automatizar el proceso y lo puedas hacer tu mismo (llegar y usar).</description>
-            <content type="html"><![CDATA[
-
-<p>En este  post mostrare una técnica  para parsear los datos  del padrón
+            <content type="html"><![CDATA[<p>En este  post mostrare una técnica  para parsear los datos  del padrón
 electoral del  Servel que vienen  en formato PDF&rsquo;s y  transformarlos a
 formato  CSV, así  puedes trabajar  con  ellos y  hacer lo  que se  te
 ocurra, como encontrar <a href="/posts/servel-uno">apellidos en peligro de extinción</a>,
 construir tu
 propio <a href="https://rutchile.cl/">rutificador</a>, ingresar
 eso datos a SQLite, Postgres, MongoDB, o Exel si prefieres.</p>
-
 <p>Al final del post agregare un link a un script que junta todo lo visto
 aquí para automatizar el proceso y  lo puedas hacer tu mismo (llegar y
 usar).</p>
-
 <h2 id="la-fuente-de-datos">La fuente de datos</h2>
-
 <p>Los datos del padrón electoral vienen  como un conjunto de archivos en
 formato PDF agrupados por comuna lo que significa que en total son 346
 documentos con  cientos de páginas  cada uno,  en total esta  &ldquo;base de
 datos&rdquo; pesa 1.5 GB (que no es tanto).</p>
-
 <p>A continuación una  página de un documento cualquiera de  esta base de
 datos,  cabe destacar  que todas  las páginas  de cada  archivo siguen
 exactamente el mismo formato:</p>
-
-<p><img src="/servel-post/pdfservelejemplo.png" alt="ejemplo pdf servel" /></p>
-
+<p><img src="/servel-post/pdfservelejemplo.png" alt="ejemplo pdf servel"></p>
 <h2 id="como-se-hace">Como se hace?</h2>
-
 <p>El  primer paso  es usar  una herramienta  llamada pdftotext  que hace
 justamente lo  que su nombre  indica, transforma PDF&rsquo;s en  archivos de
 texto plano (y a las personas  como yo nos encantan los textos planos,
 ya que son simples y muy versátiles)</p>
-
 <p>El programa se ejecuta de esta forma:</p>
-
-<pre><code class="language-bash">pdftotext -layout /path/to/file.pdf &gt; file.txt
-</code></pre>
-
-<p>El resultado es un archivo de  texto plano, con el flag <strong>-layout</strong> el
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pdftotext -layout /path/to/file.pdf &gt; file.txt
+</code></pre></div><p>El resultado es un archivo de  texto plano, con el flag <strong>-layout</strong> el
 programa pdftotext intenta mantener el formato del documento original.</p>
-
 <p>El resultado luce algo así:</p>
-
-<p><img src="/servel-post/pdf-servel-ejemplo-txt.png" alt="pdftotext" /></p>
-
+<p><img src="/servel-post/pdf-servel-ejemplo-txt.png" alt="pdftotext"></p>
 <p>El  siguiente  paso es  eliminar  secciones  del  archivo que  no  nos
 interesan:  la parte  del recuadro  en Verde  que he  remarcado.  Este
 recuadro  corresponde al  cabecera  de  cada una  de  las páginas  del
 documento que acabamos  de procesar.  Nuestro archivo  de texto tendrá
 tantos de estos recuadros como páginas tenga el documento original.</p>
-
 <p>Este patrón  se repite tantas veces  por cada archivo que  lo mejor es
 usar  alguna  herramienta que  haga  el  trabajo sucio  por  nosotros.
 <strong>sed</strong> es tu turno!:</p>
-
-<pre><code class="language-bash">cat file.txt | sed -e &quot;/REPUBLICA/,/NOMBRE.*SEXO.*MESA$/d&quot; &gt; file-woh.txt
-</code></pre>
-
-<p>Ahora nos queda la  ultima parte, que es la de  detectar y separar los
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat file.txt | sed -e <span style="color:#e6db74">&#34;/REPUBLICA/,/NOMBRE.*SEXO.*MESA</span>$<span style="color:#e6db74">/d&#34;</span> &gt; file-woh.txt
+</code></pre></div><p>Ahora nos queda la  ultima parte, que es la de  detectar y separar los
 respectivos campos  del documento para  generar el CSV.   El resultado
 intermedio que  tenemos presenta algunas complicaciones  que hacen que
 esta tarea no sea directa, estas complicaciones aparecen alrededor del
 30% de los registros, a continuación presentamos algunas:</p>
-
 <ol>
-<li><p>Aveces  un registro  aparece  desplegado  en  mas de  una  línea,
-observemos el recuadro en Rojo</p></li>
-
-<li><p>No todos  los registros tienes todos  sus campos si te  fijas en el
-recuadro Azul hay dos registros que no tienen domicilio electoral.</p></li>
-
-<li><p>La separación entre campos  no es constante, en diferentes registros
+<li>
+<p>Aveces  un registro  aparece  desplegado  en  mas de  una  línea,
+observemos el recuadro en Rojo</p>
+</li>
+<li>
+<p>No todos  los registros tienes todos  sus campos si te  fijas en el
+recuadro Azul hay dos registros que no tienen domicilio electoral.</p>
+</li>
+<li>
+<p>La separación entre campos  no es constante, en diferentes registros
 la <strong>dirección  electoral</strong> y  la <strong>circunscripción</strong>  están separados
 por 3 espacios , aveces  por más y como  se menciono en  el punto
 anterior aveces no  existe esta información, lo mismo  ocurre en otras
-partes   entre  la   circunscripción  y   la  mesa   electoral.</p></li>
+partes   entre  la   circunscripción  y   la  mesa   electoral.</p>
+</li>
 </ol>
-
 <p>Para corregir el prunto <strong>1</strong>  ocuparemos la observación de que cuando
 un registro aparece  desplegado en múltiples líneas  ocupa como máximo
 cuatro, Este script busca este patrón y corrige el error:</p>
-
-<pre><code class="language-bash">cat file-woh.txt | sed -e &quot;N;N;N;N; s/\n  */ /; P; D&quot; &gt; file-woh-fix1.txt
-</code></pre>
-
-<p>En este punto  ya tenemos un archivo con todos  sus registros ocupando
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat file-woh.txt | sed -e <span style="color:#e6db74">&#34;N;N;N;N; s/\n  */ /; P; D&#34;</span> &gt; file-woh-fix1.txt
+</code></pre></div><p>En este punto  ya tenemos un archivo con todos  sus registros ocupando
 solo una  línea, lo  que queda  es generar  el CSV,  esto nos  lleva a
 resolver el punto <strong>2</strong> y <strong>3</strong></p>
-
 <p>Para esto  ocuparemos como &ldquo;pivote&rdquo; el  campo sexo (con valores  VAR o
 MUJ) observando  que la separación  de este  campo con respecto  a los
 otros se  mantiene constante  y es  de exactamente  3 espacios  (en un
@@ -139,33 +114,26 @@ registro no posee  esta información, este patrón  nos permite detectar
 el punto  <strong>2</strong> ). El  punto <strong>3</strong> se  simplifica al haber  resulto el
 <strong>2</strong> ya  que se observa que  se puede esperar  a que el resto  de los
 campos están separados por al menos 3 espacios.</p>
-
 <p>El siguiente script aplica esta heurística a cada registro del archivo</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">read -r -d <span style="color:#e6db74">&#39;&#39;</span> SEDSCRIPT <span style="color:#e6db74">&lt;&lt; EOS
+</span><span style="color:#e6db74">  s/\s\{3,\}MUJ\s\{4,\}/;MUJ;;/
+</span><span style="color:#e6db74">  s/\s\{3,\}VAR\s\{4,\}/;VAR;;/
+</span><span style="color:#e6db74">  s/\s\s\sMUJ\s\s\s/;MUJ;/
+</span><span style="color:#e6db74">  s/\s\s\sVAR\s\s\s/;VAR;/
+</span><span style="color:#e6db74">  s/\s\{3,\}/;/g
+</span><span style="color:#e6db74">EOS</span>
 
-<pre><code class="language-bash">read -r -d '' SEDSCRIPT &lt;&lt; EOS
-  s/\s\{3,\}MUJ\s\{4,\}/;MUJ;;/
-  s/\s\{3,\}VAR\s\{4,\}/;VAR;;/
-  s/\s\s\sMUJ\s\s\s/;MUJ;/
-  s/\s\s\sVAR\s\s\s/;VAR;/
-  s/\s\{3,\}/;/g
-EOS
+cat  file-woh-fix1.txt | sed -e <span style="color:#e6db74">&#34;</span>$SEDSCRIPT<span style="color:#e6db74">&#34;</span> &gt; file.csv
 
-cat  file-woh-fix1.txt | sed -e &quot;$SEDSCRIPT&quot; &gt; file.csv
-
-</code></pre>
-
-<p>El resultado es un  es un CSV con separador de campo &ldquo;  <strong>;</strong> &ldquo;. Yo he
+</code></pre></div><p>El resultado es un  es un CSV con separador de campo &quot;  <strong>;</strong> &ldquo;. Yo he
 aplicado estos pasos  a todos los PDF&rsquo;s del padrón  electoral del 2016
 que  contiene 1,384,620  registros, el  error  que se  obtiene es  del
 0.58%.</p>
-
 <h2 id="hazlo-tu">Hazlo tu!</h2>
-
 <p>Puedes descargar un script de que realice <a href="https://github.com/marcelino-m/servel/blob/master/script/pdfservel2csv.sh">aquí</a> para transformar uno o todos
 los PDF, con la opción de generar un CSV con todos los resultados o un CSV
 por cada PDF:</p>
-
-<p><a href="https://asciinema.org/a/141371"><img src="https://asciinema.org/a/141371.png" alt="asciicast" /></a></p>
+<p><a href="https://asciinema.org/a/141371"><img src="https://asciinema.org/a/141371.png" alt="asciicast"></a></p>
 ]]></content>
         </item>
         
@@ -177,31 +145,23 @@ por cada PDF:</p>
             <guid>/posts/2018/01/el-padr%C3%B3n-electoral-del-servel-y-apellidos-en-peligro-de-extinci%C3%B3n/</guid>
             <description>El padrón electoral del Servel Servel expone de forma irresponsable (obligado por la legislación actual) los datos del padrón electoral, cuyo atributo mas sensible es la dirección electoral al presentarse junto al nombre y R.U.T de los habilitados para votar, que son casi todos los mayores de 18 años.
 En concreto es la ley 18.556 la que obliga al Servel a presentar junto con el padrón electoral los datos de tu nombre, R.</description>
-            <content type="html"><![CDATA[
-
-<h2 id="el-padrón-electoral-del-servel">El padrón electoral del Servel</h2>
-
+            <content type="html"><![CDATA[<h2 id="el-padrón-electoral-del-servel">El padrón electoral del Servel</h2>
 <p><a href="https://www.servel.cl/">Servel</a> expone de forma irresponsable (obligado por la legislación
 actual) los datos del padrón  electoral, cuyo atributo mas sensible es
 la dirección electoral  al presentarse junto al nombre y  R.U.T de los
 habilitados para votar, que son casi todos los mayores de 18 años.</p>
-
 <p>En concreto es la ley <a href="https://www.servel.cl/inscripciones-electorales-y-servicio-electoral/">18.556</a> la que obliga al Servel a presentar
 junto con  el padrón electoral  los datos  de tu nombre,  R.U.T, sexo,
 dirección electoral y mesa de votación.</p>
-
 <p>Este post no  es para hablar sobre el peligro  que representa para una
 sociedad el que no se trate con el debido cuidado información sensible
 de cada uno de nosotros ni tampoco lo fácil que es construir un perfil
 masivo  con información  que se  puede  encontrar de  forma pública  y
 complementarse con otras fuentes que se pueden adquirir con un poco de
 dinero y tiempo por cualquier persona u organización.</p>
-
 <p>Hoy comentaré  sobre algunos datos  &ldquo;Freak&rdquo; e inocentes que  se pueden
 extraer desde esta  base de datos.</p>
-
 <h2 id="datos-freaks">Datos &ldquo;Freaks&rdquo;!</h2>
-
 <ol>
 <li>Nombres menos/más  frecuentes? cuales?.</li>
 <li>Apellidos menos/más  frecuentes? cuales?.</li>
@@ -210,7 +170,6 @@ extraer desde esta  base de datos.</p>
 <li><strong>Hay apellidos en peligro de extinción?</strong>.</li>
 <li>Cuales son los R.U.T mas antiguos?, lo cual puede inferir que son las personas con mayor edad.</li>
 </ol>
-
 <p>Con <strong>apellidos en peligro de extinción</strong> me refiero a un apellido que
 solo lo  tenga una o  muy pocas personas, y  que estas tengan  una muy
 baja probabilidad de  reproducirse, como personas de  la tercera edad,
@@ -218,26 +177,21 @@ esta condición se  puede inferir a partir del  R.U.T. Otra posibilidad
 es que  sean personas realmente  desagradables y nadie  quiera copular
 con ellos pero  esto ya es mas  difícil de estimar (con  los datos del
 padrón).</p>
-
 <p>Hace tiempo, quizás no tanto, me encontraba procrastinado y el mono de
 la satisfacción instantánea que está en mi cabeza me sugirió jugar con
 ésta BD, cómo resultado me lleve  la grata sorpresa que mi amada novia
 tiene el  privilegio de  ser una  de ésas  personas que  tienen nombre
 único.</p>
-
 <h2 id="show-me-the-source-luke">Show me the source Luke&hellip;</h2>
-
 <p>El primer paso es transformar casi los 2 GB de PDF&rsquo;s (el formato de la
 BD  es un  conjunto  de  PDF&rsquo;s) que  puedes  encontrar  en internet  o
 pedirlos directamente en las oficinas del Servel, a un formato que sea
 de fácil  manipulación como lo  es formato  CSV. Con esto  logrado, el
 paso siguiente  es hacer algo  de magia  con tu lenguaje  de scripting
 favorito.</p>
-
 <p>Bueno bueno, este post ya se ha alargado lo suficiente (en realidad me
 esta dando paja  seguir escribiendo), así que dejare  el código fuente
 para el siguiente post.</p>
-
 <ul>
 <li>Si este post  te ha gustado no dudes en compartirlo</li>
 <li>Si has llegado hasta aquí gracias totales!</li>
@@ -254,46 +208,35 @@ para el siguiente post.</p>
             <description>El problema Hace poco tiempo atrás me encontraba con el siguiente misión:
 Generar 34 millones de registros alfanuméricos (solo letras y números) únicos, aleatorios, de largo 7. Todos tenían que tener estrictamente al menos una minúscula, una mayúscula y un número. Por último los registros debían ser guardados en un CSV de 37 columnas.
 Un ejemplo de un registro valido seria: dUH08XG , y de registros no validos: duHaGxg ni tampoco: duh08xg</description>
-            <content type="html"><![CDATA[
-
-<h3 id="el-problema">El problema</h3>
-
+            <content type="html"><![CDATA[<h3 id="el-problema">El problema</h3>
 <p>Hace poco tiempo atrás me  encontraba con el siguiente misión:</p>
-
 <p>Generar 34 millones de registros alfanuméricos (solo letras y números)
 únicos, aleatorios, de  largo 7. Todos tenían  que tener estrictamente
 al menos  una minúscula, una  mayúscula y  un número.  Por  último los
 registros debían ser  guardados en un CSV de 37  columnas.</p>
-
 <p>Un ejemplo de  un registro valido seria: <strong>dUH08XG</strong> ,  y de registros
 no validos: <strong>duHaGxg</strong> ni tampoco: <strong>duh08xg</strong></p>
-
 <h3 id="la-solución">La solución</h3>
-
 <p>Solo  usando   herramientas  estándar   que  se  encuentran   en  toda
 distribución GNU/Linux se puede resolver este problema en unas cuantas
 lineas de código y de forma muy clara</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+read -r -d <span style="color:#e6db74">&#39;&#39;</span> SEDSCRIPT <span style="color:#e6db74">&lt;&lt; EOS
+</span><span style="color:#e6db74">/[[:lower:]]/{
+</span><span style="color:#e6db74">        /[[:upper:]]/{
+</span><span style="color:#e6db74">                /[[:digit:]]/p
+</span><span style="color:#e6db74">        }
+</span><span style="color:#e6db74">}
+</span><span style="color:#e6db74">EOS</span>
 
-<pre><code class="language-bash">#!/bin/bash
-
-read -r -d '' SEDSCRIPT &lt;&lt; EOS
-/[[:lower:]]/{
-        /[[:upper:]]/{
-                /[[:digit:]]/p
-        }
-}
-EOS
-
-cat                             \
-    /dev/urandom              | \  # (1)
-    tr -dc 'a-zA-Z0-9'        | \  # (2)
-    fold -w 7                 | \  # (3)
-    sed -n -E -e &quot;$SEDSCRIPT&quot; | \  # (4)
-    awk '!x[$0]++'                 # (5)
-</code></pre>
-
-<p>Funcionamiento del script:</p>
-
+cat                             <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    /dev/urandom              | <span style="color:#ae81ff">\ </span> <span style="color:#75715e"># (1)</span>
+    tr -dc <span style="color:#e6db74">&#39;a-zA-Z0-9&#39;</span>        | <span style="color:#ae81ff">\ </span> <span style="color:#75715e"># (2)</span>
+    fold -w <span style="color:#ae81ff">7</span>                 | <span style="color:#ae81ff">\ </span> <span style="color:#75715e"># (3)</span>
+    sed -n -E -e <span style="color:#e6db74">&#34;</span>$SEDSCRIPT<span style="color:#e6db74">&#34;</span> | <span style="color:#ae81ff">\ </span> <span style="color:#75715e"># (4)</span>
+    awk <span style="color:#e6db74">&#39;!x[$0]++&#39;</span>                 <span style="color:#75715e"># (5)</span>
+</code></pre></div><p>Funcionamiento del script:</p>
 <ol>
 <li>Generamos un flujo aleatorio de bytes</li>
 <li>Dejamos pasar sólo letras y números</li>
@@ -301,21 +244,15 @@ cat                             \
 <li>Dejamos pasar sólo lineas compuestas estrictamente por números, mayúsculas y minúsculas</li>
 <li>Sólo dejamos pasar la linea si no ha salido antes</li>
 </ol>
-
 <p>Finalmente para generar el  CSV con los 34 millones de  registros, se puede hacer
 los siguiente:</p>
-
-<pre><code class="language-bash">./script | head -n 34000000 | xargs -n 34 | tr ' ' ,  &gt; result.csv
-</code></pre>
-
-<h3 id="nota">Nota</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./script | head -n <span style="color:#ae81ff">34000000</span> | xargs -n <span style="color:#ae81ff">34</span> | tr <span style="color:#e6db74">&#39; &#39;</span> ,  &gt; result.csv
+</code></pre></div><h3 id="nota">Nota</h3>
 <p>Un  principio de  diseño  de  software es  descomponer  un sistema  en
 unidades simples encargadas  de resolver sólo una tarea y  que ésta se
 resuelva  bien, permitiendo  que la  complejidad y  potencia aparezcan
 cuando se  combinan. Éste es un  principio  muy importante en  la
 <a href="https://en.wikipedia.org/wiki/Unix_philosophy">filosofía Unix</a></p>
-
 <p>EOF</p>
 ]]></content>
         </item>
