@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>prompt on marcelino-m</title>
+    <link>/tags/prompt/</link>
+    <description>Recent content in prompt on marcelino-m</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-cl</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Wed, 20 May 2020 00:37:02 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/prompt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mi prompt</title>
+      <link>/posts/2020/05/mi-prompt/</link>
+      <pubDate>Wed, 20 May 2020 00:37:02 -0400</pubDate>
+      
+      <guid>/posts/2020/05/mi-prompt/</guid>
+      <description>Cómo todo desarrollador que se respeta uso la consola y la uso un montón!. En este post quiero compartir justamente eso, mi promt. La idea la tome prestada del proyecto Oh My BASH! cuando le di un chance hace un tiempo pero desistí de él por tener demasiadas cosas que no usaba, yo solo quería un prompt!.
+El prompt por defecto EL típico prompt por defecto es el siguiente:
+El problema con este prompt es que si estoy muy adentro en el sistema de archivos o bien el directorio en el que me encuentro tiene un nombre muy largo se pierde mucho espacio, y así es imposible trabajar cómodamente cuando por ejemplo quiero hacer un split horizontal.</description>
+    </item>
+    
+  </channel>
+</rss>

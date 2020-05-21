@@ -6,8 +6,55 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>es-cl</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Thu, 06 Sep 2018 23:11:47 -0300</lastBuildDate>
+        <lastBuildDate>Wed, 20 May 2020 00:37:02 -0400</lastBuildDate>
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Mi prompt</title>
+            <link>/posts/2020/05/mi-prompt/</link>
+            <pubDate>Wed, 20 May 2020 00:37:02 -0400</pubDate>
+            
+            <guid>/posts/2020/05/mi-prompt/</guid>
+            <description>Cómo todo desarrollador que se respeta uso la consola y la uso un montón!. En este post quiero compartir justamente eso, mi promt. La idea la tome prestada del proyecto Oh My BASH! cuando le di un chance hace un tiempo pero desistí de él por tener demasiadas cosas que no usaba, yo solo quería un prompt!.
+El prompt por defecto EL típico prompt por defecto es el siguiente:
+El problema con este prompt es que si estoy muy adentro en el sistema de archivos o bien el directorio en el que me encuentro tiene un nombre muy largo se pierde mucho espacio, y así es imposible trabajar cómodamente cuando por ejemplo quiero hacer un split horizontal.</description>
+            <content type="html"><![CDATA[<p>Cómo todo  desarrollador que  se respeta  uso la consola  y la  uso un
+montón!.  En este  post quiero compartir justamente eso,  mi promt. La
+idea la  tome prestada del proyecto  <a href="https://ohmybash.github.io/">Oh My BASH!</a> cuando  le di un
+chance hace  un tiempo pero desistí  de él por tener  demasiadas cosas
+que no usaba, yo solo quería un prompt!.</p>
+<h2 id="el-prompt-por-defecto">El prompt por defecto</h2>
+<p>EL típico prompt por defecto es el siguiente:</p>
+<p><img src="/my-prompt/default-prompt.png" alt="default prompt"></p>
+<p>El problema con este prompt es que  si estoy muy adentro en el sistema
+de  archivos o  bien el  directorio en  el que  me encuentro  tiene un
+nombre muy largo se pierde mucho  espacio, y así es imposible trabajar
+cómodamente cuando por  ejemplo quiero hacer un  split horizontal. Una
+posible solución es solo mostrar el nombre del directorio actual, pero
+con esto  se pierde  visibilidad de  la ruta  completa.  Junto  con lo
+anterior,  encuentro  que este  prompt  entrega  muy poca  información
+contextual.</p>
+<p><img src="/my-prompt/prompt-folder-too-long.png" alt="prompt folders too long"></p>
+<h2 id="el-prompt-que-uso">El prompt que uso</h2>
+<p>En una búsqueda por balancear el minimalismo, por una parte, y maximizar
+la información  que entrega el prompt,  por otra. Es que  desarrolle el
+siguiente prompt:</p>
+<p><img src="/my-prompt/new-prompt.png" alt="new prompt"></p>
+<p>Con  este prompt  siempre tengo  el  mismo espacio  para ejecutar  mis
+comandos, no importa que tan largo sea el path en el que me encuentre</p>
+<p><img src="/my-prompt/new-folder-too-long.png" alt="prompt folders too long"></p>
+<p>Si  estoy dentro  de un  repo  me informa  en que  rama estoy  cuantos
+archivos modificados nuevos o no trackeados hay</p>
+<p><img src="/my-prompt/new-prompt-repo.png" alt="new prompt"></p>
+<p>Si tengo activado un virualenv</p>
+<p><img src="/my-prompt/new-prompt-venv.png" alt="new prompt"></p>
+<p>Si estoy  conectado por ssh  a otra  maquina, el comportamiento  es el
+mismo pero el prompt en vez de ser purpura se presenta como rojo, para
+mi esto es muy útil, ya que sin pensar y solo con mirar se si estoy en
+una terminal local o remota.</p>
+<p><img src="/my-prompt/new-prompt-remote.png" alt="new prompt"></p>
+]]></content>
+        </item>
         
         <item>
             <title>Mecánica cuántica y el derecho al aborto</title>
