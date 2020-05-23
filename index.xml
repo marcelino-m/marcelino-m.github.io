@@ -18,9 +18,7 @@
       <pubDate>Wed, 20 May 2020 00:37:02 -0400</pubDate>
       
       <guid>/posts/2020/05/mi-prompt/</guid>
-      <description>Cómo todo desarrollador que se respeta uso la consola y la uso un montón!. En este post quiero compartir justamente eso, mi promt. La idea la tome prestada del proyecto Oh My BASH! cuando le di un chance hace un tiempo pero desistí de él por tener demasiadas cosas que no usaba, yo solo quería un prompt!.
-El prompt por defecto EL típico prompt por defecto es el siguiente:
-El problema con este prompt es que si estoy muy adentro en el sistema de archivos o bien el directorio en el que me encuentro tiene un nombre muy largo se pierde mucho espacio, y así es imposible trabajar cómodamente cuando por ejemplo quiero hacer un split horizontal.</description>
+      <description>Cómo todo desarrollador que se respeta uso la consola y la uso un montón!, y en este post quiero compartir la configuración de mi prompt, a mi me gusta por que lo encuentro ergonómico, simple y por que no decirlo sexy!. La idea la tome prestada del proyecto Oh My BASH! cuando le di un chance hace un tiempo pero desistí de él por tener demasiadas cosas que no usaba, yo solo quería un prompt!</description>
     </item>
     
     <item>
