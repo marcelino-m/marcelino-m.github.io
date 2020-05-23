@@ -53,6 +53,9 @@ mismo pero el prompt en vez de ser purpura se presenta como rojo, para
 mi esto es muy útil, ya que sin pensar y solo con mirar se si estoy en
 una terminal local o remota.</p>
 <p><img src="/my-prompt/new-prompt-remote.png" alt="new prompt"></p>
+<p>En  mis <a href="https://github.com/marcelino-m/.dotfiles/">.dotfiles</a>  puedes
+encontrar los detalles, ahí  encontraras dos archivos <code>bash/.prompt</code> y
+<code>bash/.color</code></p>
 ]]></content>
         </item>
         
